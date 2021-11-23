@@ -1,0 +1,100 @@
+.nav {
+    background-color: #273173;
+    text-align: center;
+    padding-top: 3.5vh;
+    padding-bottom: 3.5vh;
+    margin: 4vh;
+
+}
+.Posts{
+    background-color: #273173;
+    padding: 5vh
+}
+.welcome{
+    background-color: #273173;
+    text-align: center;
+    padding: 5vh;
+
+}
+#title{
+    font-size: 5vh;
+    color: white;
+}
+#text{
+    font-size: smaller;
+    color: white;
+}
+
+#grad {
+    background-image: linear-gradient(#181d48, #0b0c18);
+}
+
+body{
+    background-color: #273173;
+
+}
+.content{
+    padding-top: 3.5vh;
+    padding-bottom: 3.5vh;
+    margin: 4vh;
+    color: white;
+}
+.form{
+    background-color: #273173;
+    padding: 5vh;
+    color: white;
+}
+.post{
+    background-color: #5866be;
+
+}
+.titel{
+    font-size: 3vh;
+
+}
+.date{
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a:link {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: none;
+}
