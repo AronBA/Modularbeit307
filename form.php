@@ -17,6 +17,8 @@
         <form action="backend.php" method="post">
             Titel
             <input type="text" name="Titel"><br>
+            Autor
+            <input type="text" name="Autor"><br>
             Inhalt
             <textarea name="content">Hier kommt post test rein</textarea><br>
             Bild

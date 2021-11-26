@@ -1,6 +1,6 @@
 <?php
 function getdirlen(){
-    $dirlen = 1;
+    $dirlen = 0;
     $dirpath = "./posts/text/*.txt";
     foreach(glob($dirpath) as $file){
         $dirlen++;
@@ -11,23 +11,32 @@ function getdirlen(){
 function loadpost($file,$mode="load"){
     if ($mode == "load"){
 
-        $path = "posts/text/$file.txt";
+        $path = "posts/text/$file";
         $txt = file_get_contents($path);
         $content = explode("<|>", $txt);
         echo "<div class='Post'>
 <titel class='titel'>$content[0]</titel>
-<br>
-<date class='date'>$content[1]</date>
-<br>
-<content class='content'>$content[2]</content>
+<autor class='autor'>by $content[3]</autor>
+<content class='text'>$content[1]</content>
+<date class='date'>$content[2]</date>
+<img class='img' src='posts/img/image0.jpg' alt='picture'>
 </div>";
     }
 }
+function timestamp(){
+    $date = date("Ymdhis");
+    return $date;
+}
+function getpost($n,$mode="text"){
+    $folder = scandir("posts/text", SCANDIR_SORT_DESCENDING);
+    return $folder[$n];
+}
 
-function createpost($titel,$text){
-    $filename = getdirlen();
-    $date = date("d/m/Y");
-    $content = $titel . "<|>" . $date . "<|>" . $text;
+
+function createpost($titel,$autor,$text){
+    $filename = timestamp();
+    $date = date("d/m/Y h:i:s");
+    $content = $titel . "<|>" . $autor . "<|> ". $date . "<|>" . $text;
 
     $post = fopen("posts/text/$filename.txt", "w");
     fwrite($post,$content);
@@ -36,8 +45,9 @@ function createpost($titel,$text){
 
 if(isset($_POST['submit'])) {
     $titel = $_POST["Titel"];
+    $autor = $_POST["Autor"];
     $text = $_POST["content"];
-    createpost($titel,$text);
+    createpost($titel,$text, $autor);
     header("Location: index.php");
 }
 

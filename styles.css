@@ -44,18 +44,60 @@ body{
     padding: 5vh;
     color: white;
 }
-.post{
-    background-color: #5866be;
 
+
+
+.post{
+    padding: 1vh;
+    background-color: #4d56a4;
+    display: grid;
+    border-color: white;
+    border-width: 0.2vh;
+    border-style: solid;
+    grid-template-columns: 20% 50% 30%;
 }
 .titel{
+    border-style: none;
+    border-bottom-style: solid;
+    border-color: white;
+    border-width: 0.2vh;
     font-size: 3vh;
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-weight: bold;
+
 
 }
 .date{
-    text-align: left;
+    text-align: right;
+    grid-row: 1;
+    grid-column: 3;
 }
+.autor{
+    font-size: smaller;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row:4;
 
+}
+.text{
+    margin-top: 2vh;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+}
+.img{
+    margin: 3vh;
+    max-height: 40vh;
+    width: 90%;
+    height: 90%;
+    grid-column: 3;
+    grid-row: 3;
+
+}
 
 
 
