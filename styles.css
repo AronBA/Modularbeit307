@@ -4,16 +4,21 @@
     padding-top: 3.5vh;
     padding-bottom: 3.5vh;
     margin: 4vh;
+    box-shadow: 4px 3px 8px 1px #000000;
+
+
 
 }
 .Posts{
     background-color: #273173;
     padding: 5vh
+
 }
 .welcome{
     background-color: #273173;
     text-align: center;
     padding: 5vh;
+
 
 }
 #title{
@@ -26,7 +31,7 @@
 }
 
 #grad {
-    background-image: linear-gradient(#181d48, #0b0c18);
+    background-image: linear-gradient(#1d2254, #000000);
 }
 
 body{
@@ -38,12 +43,63 @@ body{
     padding-bottom: 3.5vh;
     margin: 4vh;
     color: white;
+
+
 }
 .form{
     background-color: #273173;
     padding: 5vh;
     color: white;
+
+
+
+
 }
+
+.inautor,.intitel{
+    border-style:none;
+    border-bottom-style: solid;
+    border-width: 0.1vh;
+    border-color: #0b0c18;
+    width: 30vw;
+    height: 3vh;
+    background: transparent;
+    color: white;
+    margin-bottom: 2vh;
+}
+.intitel{
+    font-weight: bold;
+}
+
+.incontent{
+    width: 80vw;
+    height: 20vh;
+    resize: none;
+    border-style: solid;
+    border-width: 0.1vh;
+    border-color: #0b0c18;
+    border-radius: 15px;
+    margin-bottom: 2vh;
+}
+.infile{
+    border-style: solid;
+    border-width: 0.1vh;
+    border-color: #0b0c18;
+    border-radius: 15px;
+    margin-bottom: 2vh;
+}
+
+
+.insubmit{
+    border-style: solid;
+    border-width: 0.1vh;
+    border-color: #0b0c18;
+    border-radius: 15px;
+}
+
+
+
+
 
 
 
@@ -55,6 +111,8 @@ body{
     border-width: 0.2vh;
     border-style: solid;
     grid-template-columns: 20% 50% 30%;
+    box-shadow: 4px 3px 8px 1px #000000;
+
 }
 .titel{
     border-style: none;
@@ -98,23 +156,6 @@ body{
     grid-row: 3;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 a:link {

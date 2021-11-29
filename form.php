@@ -1,4 +1,4 @@
-<html lang="de">
+c<html lang="de">
 <head>
     <link rel="stylesheet" href="styles.css">
     <title>Home</title>
@@ -10,20 +10,19 @@
 <div class="content">
     <div class="welcome">
         <div id="title">NEW POST</div>
-        <div id="text">I feel depressed!</div>
+        <div id="text">create a new Post!</div>
     </div>
 
     <div class="form">
         <form action="backend.php" method="post">
-            Titel
-            <input type="text" name="Titel"><br>
-            Autor
-            <input type="text" name="Autor"><br>
-            Inhalt
-            <textarea name="content">Hier kommt post test rein</textarea><br>
-            Bild
-            <input type="file" name="picture"><br>
-            <input type="submit" name="submit" value="Post!">
+            <titel class="formitile" >Titel:</titel>
+            <input type="text" class="intitel" name="Titel"> <br>
+            <titel class="formautor" >Autor:</titel>
+            <input type="text" class="inautor" name="Autor"><br>
+            <textarea name="content" class="incontent"></textarea><br>
+            select image
+            <input type="file" class="infile" name="picture"><br>
+            <input type="submit" class="insubmit" name="submit" value="Post!">
         </form>
     </div>
 </div>

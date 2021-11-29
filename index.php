@@ -10,8 +10,8 @@
     <div class="content">
         <div class="welcome">
             <div id="title">Welcome</div>
-            <div id="text">This is a public Blog. Start right now! </div>
-            <div id="button"><a href="form.php">New Post</a> </div>
+            <div id="text">This is a public Blog. Start right now with creating a <a href="form.php">New Post</a> </div>
+
 
         </div>
 
