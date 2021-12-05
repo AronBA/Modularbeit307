@@ -60,7 +60,7 @@ body{
     border-style:none;
     border-bottom-style: solid;
     border-width: 0.1vh;
-    border-color: #0b0c18;
+    border-color: #ffffff;
     width: 30vw;
     height: 3vh;
     background: transparent;
@@ -127,6 +127,9 @@ body{
 
 
 }
+.edit{
+    grid-row: 1;
+}
 .date{
     text-align: right;
     grid-row: 1;
@@ -145,6 +148,7 @@ body{
     grid-row-end: 4;
     grid-column-start: 1;
     grid-column-end: 3;
+    overflow-wrap: break-word;
 
 }
 .img{

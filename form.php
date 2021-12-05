@@ -14,7 +14,7 @@ c<html lang="de">
     </div>
 
     <div class="form">
-        <form action="backend.php" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <titel class="formitile" >Titel:</titel>
             <input type="text" class="intitel" name="Titel"> <br>
             <titel class="formautor" >Autor:</titel>
@@ -29,5 +29,17 @@ c<html lang="de">
 <footer class="nav">
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">About | </a><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"> Impressum </a><a href="https://github.com/AronBA"> | GitHub</a>
 </footer>
+<?php
+require "backend.php";
+if(isset($_POST['submit'])) {
+    $titel = $_POST["Titel"];
+    $autor = $_POST["Autor"];
+    $text = $_POST["content"];
+    $img = $_FILES["picture"]["name"];
+    $tmp_img = $_FILES["picture"]["tmp_name"];
+    createpost($titel,$text, $autor,$img,$tmp_img);
+}
+
+?>
 </body>
 </html>

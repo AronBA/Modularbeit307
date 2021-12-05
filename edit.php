@@ -15,6 +15,11 @@
 
     <div class="Posts">
         <?php
+        require "backend.php";
+        for ($i = 0; $i < getdirlen(); $i++){
+            loadpost(getpost($i),getpost($i,"img"),"edit");
+            echo "<br>";
+        }
         ?>
     </div>
 </div>

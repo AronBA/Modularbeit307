@@ -7,8 +7,7 @@ function getdirlen(){
     }
     return $dirlen;
 }
-
-function loadpost($file,$mode="load"){
+function loadpost($file,$img,$mode="load"){
     if ($mode == "load"){
 
         $path = "posts/text/$file";
@@ -19,36 +18,48 @@ function loadpost($file,$mode="load"){
 <autor class='autor'>by $content[3]</autor>
 <content class='text'>$content[1]</content>
 <date class='date'>$content[2]</date>
+<img class='img' src='posts/img/$img' alt='picture'>
+</div>";
+    } else if ($mode = "edit"){
+        $path = "posts/text/$file";
+        $txt = file_get_contents($path);
+        $content = explode("<|>", $txt);
+        echo "<div class='Post'>
+<titel class='titel'>$content[0]</titel>
+<l class='edit'>edit</l>
+<autor class='autor'>by $content[3]</autor>
+<content class='text'>$content[1]</content>
+<date class='date'>$content[2]</date>
 <img class='img' src='posts/img/image0.jpg' alt='picture'>
 </div>";
+
+
     }
 }
 function timestamp(){
-    $date = date("Ymdhis");
+    $date = date("YmdHisu");
     return $date;
 }
-function getpost($n,$mode="text"){
-    $folder = scandir("posts/text", SCANDIR_SORT_DESCENDING);
-    return $folder[$n];
+function getpost($n,$mode="post"){
+    if ($mode == "post") {
+        $folder = scandir("posts/text", SCANDIR_SORT_DESCENDING);
+        return $folder[$n];
+    } else if ($mode == "img"){
+        $folder = scandir("posts/img", SCANDIR_SORT_DESCENDING);
+        return $folder[$n];
+    }
 }
-
-
-function createpost($titel,$autor,$text){
+function createpost($titel,$autor,$text,$img,$tmp_img){
     $filename = timestamp();
     $date = date("d/m/Y h:i:s");
     $content = $titel . "<|>" . $autor . "<|> ". $date . "<|>" . $text;
-
     $post = fopen("posts/text/$filename.txt", "w");
     fwrite($post,$content);
     fclose($post);
-}
 
-if(isset($_POST['submit'])) {
-    $titel = $_POST["Titel"];
-    $autor = $_POST["Autor"];
-    $text = $_POST["content"];
-    createpost($titel,$text, $autor);
-    header("Location: index.php");
-}
+    $filetype = strtolower(pathinfo(basename($img),PATHINFO_EXTENSION));
+    echo $filetype;
+    move_uploaded_file($tmp_img, "posts/img/$filename.$filetype");
 
+}
 
