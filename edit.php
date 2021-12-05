@@ -20,6 +20,13 @@
             loadpost(getpost($i),getpost($i,"img"),"edit");
             echo "<br>";
         }
+
+
+
+        if(isset($_POST['delete'])) {
+            $file = $_POST['delete'];
+            deletepost($file);
+        }
         ?>
     </div>
 </div>

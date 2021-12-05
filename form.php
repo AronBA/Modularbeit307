@@ -15,13 +15,13 @@ c<html lang="de">
 
     <div class="form">
         <form action="" method="post" enctype="multipart/form-data">
-            <titel class="formitile" >Titel:</titel>
-            <input type="text" class="intitel" name="Titel"> <br>
-            <titel class="formautor" >Autor:</titel>
-            <input type="text" class="inautor" name="Autor"><br>
+            <titel class="formitile"  required >Titel:</titel>
+            <input type="text" class="intitel" name="Titel" required> <br>
+            <titel class="formautor" required >Autor:</titel>
+            <input type="text" class="inautor" name="Autor" required><br>
             <textarea name="content" class="incontent"></textarea><br>
             select image
-            <input type="file" class="infile" name="picture"><br>
+            <input type="file" class="infile" name="picture" required><br>
             <input type="submit" class="insubmit" name="submit" value="Post!">
         </form>
     </div>
@@ -37,7 +37,19 @@ if(isset($_POST['submit'])) {
     $text = $_POST["content"];
     $img = $_FILES["picture"]["name"];
     $tmp_img = $_FILES["picture"]["tmp_name"];
-    createpost($titel,$text, $autor,$img,$tmp_img);
+    if (strlen($titel) > 80){
+        $errormsg = "lol";
+    } else if (strlen($autor) > 50) {
+
+      echo "error";
+    }else if (strlen($text) > 50) {
+        echo "error";
+    } else {
+
+        createpost($titel,$text, $autor,$img,$tmp_img);
+    }
+
+
 }
 
 ?>
