@@ -64,7 +64,7 @@ function getpost($n,$mode="post"){
 function createpost($titel,$autor,$text,$img,$tmp_img){
     $filename = timestamp();
     $date = date("d/m/Y h:i:s");
-    $content = $titel . "<|>" . $autor . "<|> ". $date . "<|>" . $text;
+    $content = $titel . "<|>" . $autor . "<|> ". $date . "<|>" . $text . "<|>" . $filename.".txt";
     $post = fopen("posts/text/$filename.txt", "w");
     fwrite($post,$content);
     fclose($post);
