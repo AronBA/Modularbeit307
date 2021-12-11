@@ -23,19 +23,6 @@ function loadpost($file,$img,$mode="load"){
                 <date class='date'>$content[2]</date>
                 <img class='img' src='posts/img/$img' alt='picture'>
                 </div>";
-    } else if ($mode = "edit"){
-        $path = "posts/text/$file";
-        $txt = file_get_contents($path);
-        $content = explode("<|>", $txt);
-        echo "<div class='Post'>
-                <titel class='titel'>$content[0]</titel>
-                <form><input type='submit' value='$file' name='$file'>
- 
-                <autor class='autor'>by $content[3]</autor>
-                <content class='text'>$content[1]</content>
-                <date class='date'>$content[2]</date>
-                <img class='img' src='posts/img/$img' alt='picture'>
-                </div>";
     }
 }
 
@@ -66,20 +53,31 @@ function createpost($titel,$autor,$text,$img,$tmp_img){
     redirect("index.php");
 }
 
+function editpost($titel,$text,$autor,$img,$tmp_img,$oldpost,$oldimg){
+    $filename = timestamp();
+    $date = date("d/m/Y h:i:s");
+    $content = $titel . "<|>" . $autor . "<|> ". $date . "<|>" . $text . "<|>" . $filename.".txt";
+    $post = fopen("posts/text/$filename.txt", "w");
+    fwrite($post,$content);
+    fclose($post);
+    $filetype = strtolower(pathinfo(basename($img),PATHINFO_EXTENSION));
+    move_uploaded_file($tmp_img, "posts/img/$filename.$filetype");
+    deletepost($oldpost,$oldimg);
+    redirect("index.php");
+}
+
+
+
 function redirect($url)
 {
     echo "<meta http-equiv='refresh' content='0;url=$url'>";
     exit();
 }
 
-
-
 if(isset($_GET['deletePost'])
 &&isset($_GET['deleteImage'])) {
         deletePost($_GET['deletePost'],$_GET["deleteImage"]);
 }
-
-
 
 function deletepost($filename,$imgname){
     $filetype = strtolower(pathinfo(basename($filename),PATHINFO_EXTENSION));
@@ -87,8 +85,6 @@ function deletepost($filename,$imgname){
         unlink($filename);
         unlink($imgname);
         redirect("index.php");
-
-
     }
 }
 

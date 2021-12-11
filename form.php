@@ -15,19 +15,19 @@
 
     <div class="form">
         <form action="" method="post" enctype="multipart/form-data">
-            <titel class="formitile"  required >Titel:</titel>
-            <input type="text" class="intitel" name="Titel" required> <br>
+            <titel class="formitile" required >Titel:</titel>
+            <input type="text" class="intitel" maxlength="80" name="Titel" required> <br>
             <titel class="formautor" required >Autor:</titel>
-            <input type="text" class="inautor" name="Autor" required><br>
-            <textarea name="content" class="incontent"></textarea><br>
+            <input type="text" class="inautor" maxlength="50" name="Autor" required><br>
+            <textarea name="content" maxlength="2000" class="incontent"></textarea><br>
             select image
-            <input type="file" class="infile" name="picture" required><br>
+            <input type="file" class="infile" name="picture" accept=".jpeg, .png, .jpg, .gif" required><br>
             <input type="submit" class="insubmit" name="submit" value="Post!">
         </form>
     </div>
 </div>
 <footer class="nav">
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">About | </a><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"> Impressum </a><a href="https://github.com/AronBA"> | GitHub</a>
+<a href="https://github.com/AronBA">GitHub</a>
 </footer>
 <?php
 require "backend.php";
@@ -37,20 +37,17 @@ if(isset($_POST['submit'])) {
     $text = $_POST["content"];
     $img = $_FILES["picture"]["name"];
     $tmp_img = $_FILES["picture"]["tmp_name"];
-    $tmp_img = $_FILES["picture"]["size"];
-    if (strlen($titel) > 80){
-        $errormsg = "lol";
-    } else if (strlen($autor) > 50) {
+    $imgsize = $_FILES["picture"]["size"];
 
-      echo "error";
-    }else if (strlen($text) > 2000) {
-        echo "error";
-    } else {
-
-        createpost($titel,$text, $autor,$img,$tmp_img);
+    if (strlen($titel) > 80 && isset($titel) && !empty($titel)
+        || (strlen($autor) > 50) && isset($autor) && !empty($autor)
+        || (strlen($text) > 2000) && isset($text) && !empty($text)
+        || $imgsize > 500000 && isset($img)  ) {
+        redirect("error.php");
     }
-
-
+    else {
+            createpost($titel,$text, $autor,$img,$tmp_img);
+}
 }
 
 ?>
