@@ -11,10 +11,13 @@ function getdirlen(){
 function loadpost($file,$img,$mode="load"){
     if ($mode == "load"){
         $path = "posts/text/$file";
+        $imgpath = "posts/img/$img";
         $txt = file_get_contents($path);
         $content = explode("<|>", $txt);
         echo "<div class='Post'>
                 <titel class='titel'>$content[0]</titel>
+                <a class='editPost' href='edit.php?editPost=$path&editImage=$imgpath'><div class='postEdit'>Edit</div></a>
+                <a class='deletePost' href='backend.php?deletePost=$path&deleteImage=$imgpath'><div class='postDelete'>Delete</div></a>
                 <autor class='autor'>by $content[3]</autor>
                 <content class='text'>$content[1]</content>
                 <date class='date'>$content[2]</date>
@@ -27,22 +30,12 @@ function loadpost($file,$img,$mode="load"){
         echo "<div class='Post'>
                 <titel class='titel'>$content[0]</titel>
                 <form><input type='submit' value='$file' name='$file'>
-                <input type='submit' value='edit'></form>
+ 
                 <autor class='autor'>by $content[3]</autor>
                 <content class='text'>$content[1]</content>
                 <date class='date'>$content[2]</date>
                 <img class='img' src='posts/img/$img' alt='picture'>
                 </div>";
-    }
-}
-
-function deletepost($filename){
-    $txtpath = "posts/text/$filename";
-    $imgpath = "posts/img/$filename";
-    $filetype = strtolower(pathinfo(basename($txtpath),PATHINFO_EXTENSION));
-    if ($filetype == "txt"){
-        unlink($txtpath);
-        unlink($imgpath);
     }
 }
 
@@ -70,5 +63,34 @@ function createpost($titel,$autor,$text,$img,$tmp_img){
     fclose($post);
     $filetype = strtolower(pathinfo(basename($img),PATHINFO_EXTENSION));
     move_uploaded_file($tmp_img, "posts/img/$filename.$filetype");
+    redirect("index.php");
 }
+
+function redirect($url)
+{
+    echo "<meta http-equiv='refresh' content='0;url=$url'>";
+    exit();
+}
+
+
+
+if(isset($_GET['deletePost'])
+&&isset($_GET['deleteImage'])) {
+        deletePost($_GET['deletePost'],$_GET["deleteImage"]);
+}
+
+
+
+function deletepost($filename,$imgname){
+    $filetype = strtolower(pathinfo(basename($filename),PATHINFO_EXTENSION));
+    if ($filetype == "txt"){
+        unlink($filename);
+        unlink($imgname);
+        redirect("index.php");
+
+
+    }
+}
+
+
 

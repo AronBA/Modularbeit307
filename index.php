@@ -5,7 +5,7 @@
 </head>
 <body id="grad">
     <div class="nav">
-        <a href="index.php">Home | </a><a href="form.php"> New Post </a><a href="edit.php"> | Edit Posts</a>
+        <a href="index.php">Home  </a>|<a href="form.php"> New Post </a>
     </div>
     <div class="content">
         <div class="welcome">
