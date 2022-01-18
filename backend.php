@@ -50,7 +50,7 @@ function createpost($titel,$autor,$text,$img,$tmp_img){
     fclose($post);
     $filetype = strtolower(pathinfo(basename($img),PATHINFO_EXTENSION));
     move_uploaded_file($tmp_img, "posts/img/$filename.$filetype");
-    redirect("index.php");
+    redirect("reg.php");
 }
 
 function editpost($titel,$text,$autor,$img,$tmp_img,$oldpost,$oldimg){
@@ -63,7 +63,7 @@ function editpost($titel,$text,$autor,$img,$tmp_img,$oldpost,$oldimg){
     $filetype = strtolower(pathinfo(basename($img),PATHINFO_EXTENSION));
     move_uploaded_file($tmp_img, "posts/img/$filename.$filetype");
     deletepost($oldpost,$oldimg);
-    redirect("index.php");
+    redirect("reg.php");
 }
 
 
@@ -84,7 +84,7 @@ function deletepost($filename,$imgname){
     if ($filetype == "txt"){
         unlink($filename);
         unlink($imgname);
-        redirect("index.php");
+        redirect("reg.php");
     }
 }
 
