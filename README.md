@@ -1,4 +1,4 @@
-### Aufgabenstellung:  
+# Aufgabenstellung:  
 
 Sie programmieren eine Website in PHP, die Nachrichten nach Datum sortiert darstellen kann und Nachrichten erfassen kann. Die Nachrichten sollen als Text-Datei auf ihrem Webserver gespeichert werden. Es soll möglich sein, die Dateien mit den Nachrichten von der Website aus zu ändern und gegebenenfalls auch zu löschen.  
 
